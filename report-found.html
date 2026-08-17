@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แจ้งพบของ | SAPA Lost and Found</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    <nav class="navbar">
+        <div class="navbar-brand" onclick="window.location.href='index.html'">
+            <div class="logo-wrapper"><img src="images/sapa.png" alt="SAPA Logo" class="navbar-logo"></div>
+            <div class="navbar-text-group"><span class="navbar-title">SAPA Lost & Found</span></div>
+        </div>
+        <div class="navbar-right" style="display: flex; align-items: center; gap: 15px;">
+            <div class="nav-icon-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+                <i id="theme-icon-auth" class="fa-solid fa-moon"></i>
+            </div>
+            <div class="nav-icon-btn" onclick="window.location.href='dashboard.html'"><i class="fa-solid fa-house"></i></div>
+        </div>
+    </nav>
+
+    <section class="container">
+        <div class="section-header">
+            <button class="btn btn-login" onclick="window.location.href='dashboard.html'" style="margin-right: 20px;"><i class="fa-solid fa-arrow-left"></i> กลับ</button>
+            <h2 class="section-title">แจ้งพบของ</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="form-card">
+            <form id="foundForm" onsubmit="event.preventDefault(); window.submitFoundReport()">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">ชื่อผู้พบ</label>
+                        <input type="text" class="form-control" name="reporterName" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">ช่องทางการติดต่อ Admin</label>
+                        <label class="form-label">IG : @bspwit.sapa</label>
+                        
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">ประเภทสิ่งของที่พบ</label>
+                    <select class="form-control" name="itemType" required>
+                        <option value="">เลือกประเภท...</option>
+                        <option value="Electronics">อิเล็กทรอนิกส์</option>
+                        <option value="Stationery">เครื่องเขียน</option>
+                        <option value="Clothing">เสื้อผ้า</option>
+                        <option value="Others">อื่นๆ</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">สถานที่ที่พบ <span style="color: red;">*</span></label>
+                    <input type="text" class="form-control" name="location" required placeholder="เช่น หน้าตึก 1, ใต้ต้นไม้">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">รูปภาพของที่พบ <span style="color: red;">*</span></label>
+                    <input type="file" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-register" style="width: 100%; padding: 15px; font-size: 1.1rem; background: var(--primary-red); color: white;">ส่งรายการแจ้งพบของ</button>
+            </form>
+        </div>
+    </section>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>

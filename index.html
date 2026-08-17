@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAPA Lost and Found | Bangsaphanwittaya School</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Student Login Modal -->
+    <div id="studentLoginModal" class="modal">
+        <div class="modal-content">
+            <div style="color: var(--primary-red); font-size: 3.5rem; margin-bottom: 15px;"><i class="fa-solid fa-graduation-cap"></i></div>
+            <h3 class="modal-title">Student Login</h3>
+            <p style="color: var(--text-muted);">กรุณากรอกข้อมูลเพื่อเข้าสู่ระบบนักเรียน</p>
+            
+            <div class="modal-input-wrapper" style="margin-top: 20px;">
+                <input type="text" id="studentIdInput" class="modal-input" placeholder="รหัสนักเรียน 5 หลัก" maxlength="5" style="margin-bottom: 15px;">
+                <input type="password" id="studentPasswordInput" class="modal-input" placeholder="รหัสนักเรียน 5 หลัก">
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <button class="btn btn-register" style="width: 100%; padding: 15px; font-size: 1.1rem;" onclick="handleStudentLogin()">
+                    <i class="fa-solid fa-right-to-bracket"></i> เข้าสู่ระบบ
+                </button>
+                <button class="btn" style="background: transparent; color: #999;" onclick="closeModal('studentLoginModal')">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="adminLoginModal" class="modal">
+        <div class="modal-content">
+            <div style="color: var(--primary-orange); font-size: 3.5rem; margin-bottom: 15px;"><i class="fa-solid fa-shield"></i></div>
+            <h3 class="modal-title">Admin Login</h3>
+            <p style="color: var(--text-muted);">กรุณากรอกข้อมูลเพื่อเข้าสู่ระบบผู้ดูแล</p>
+            
+            <div class="modal-input-wrapper" style="margin-top: 20px;">
+                <input type="text" id="adminIdInput" class="modal-input" placeholder="รหัสผู้ดูแล" style="margin-bottom: 15px;">
+                <input type="password" id="adminPasswordInput" class="modal-input" placeholder="รหัสผ่าน">
+                
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <button class="btn btn-register" style="width: 100%; padding: 15px; font-size: 1.1rem; background: var(--primary-orange);" onclick="handleAdminLogin()">
+                    <i class="fa-solid fa-right-to-bracket"></i> เข้าสู่ระบบ
+                </button>
+                <button class="btn" style="background: transparent; color: #999;" onclick="closeModal('adminLoginModal')">ยกเลิก</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-brand" onclick="window.location.href='index.html'">
+            <div class="logo-wrapper">
+                <img src="images/sapa.png" alt="SAPA Logo" class="navbar-logo" onerror="this.src='https://via.placeholder.com/50/FFFFFF/2E7D32?text=SAPA'">
+            </div>
+            <div class="navbar-text-group">
+                <span class="navbar-title">SAPA Lost & Found</span>
+                <span class="navbar-subtitle">Bangsaphanwittaya School</span>
+            </div>
+        </div>
+        <div class="navbar-right" id="nav-actions">
+            <div id="guest-btns">
+                <button class="btn btn-login" onclick="openModal('studentLoginModal')">นักเรียน</button>
+                <button class="btn btn-login" style="background: var(--primary-orange);" onclick="openModal('adminLoginModal')">ผู้ดูแล</button>
+            </div>
+            <div id="auth-actions" class="hidden">
+                <div class="nav-icons">
+                    <div class="nav-icon-btn" onclick="toggleNotifications()">
+                        <i class="fa-solid fa-bell"></i>
+                        <div id="notif-dot" class="notification-dot hidden"></div>
+                    </div>
+                    <div class="nav-icon-btn" onclick="window.location.href='history.html'">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <div class="nav-icon-btn" onclick="logout()" title="Logout">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- VIEW: HOME -->
+    <section class="view active">
+        <div class="hero">
+            <div class="hero-content">
+                <span class="hero-badge">Student Council of Bangsaphanwittaya</span>
+                <h1 class="hero-title">Lost <span>&</span> Found</h1>
+                <p class="hero-description">ศูนย์รวมแจ้งของหายและส่งคืนของที่พบ เพื่อช่วยเหลือนักเรียนทุกคน</p>
+                <div class="search-wrapper">
+                    <div class="search-icon-left"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    <input type="text" class="search-input" placeholder="ค้นหาของหาย เช่น กระเป๋าตังค์, กุญแจ, สมุด...">
+                    <button class="btn-search" onclick="window.location.href='search.html'">ค้นหา</button>
+                </div>
+                <p class="mt-4" style="color: var(--text-muted);">กรุณา <a href="#" onclick="openModal('studentLoginModal')" style="color: var(--primary-red); font-weight: 600;">เข้าสู่ระบบ</a> เพื่อแจ้งรายการของหาย/พบของ</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo-wrapper" style="width: fit-content; margin: 0 auto 20px;">
+                <img src="images/sapa.png" alt="SAPA Logo" class="footer-logo" onerror="this.src='https://via.placeholder.com/60/FFFFFF/2E7D32?text=SAPA'">
+            </div>
+            <div class="footer-links">
+                <a href="index.html">หน้าแรก</a>
+                <a href="report-lost.html">แจ้งของหาย</a>
+                <a href="report-found.html">แจ้งพบของ</a>
+                <a href="#">ติดต่อสภานักเรียน</a>
+            </div>
+            <p class="copyright">© 2026 Student Council of Bangsaphanwittaya School. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>

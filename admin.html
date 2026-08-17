@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | SAPA Lost and Found</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    <nav class="navbar">
+        <div class="navbar-brand" onclick="window.location.href='index.html'">
+            <div class="logo-wrapper"><img src="images/sapa.png" alt="SAPA Logo" class="navbar-logo"></div>
+            <div class="navbar-text-group"><span class="navbar-title">Admin Dashboard</span></div>
+        </div>
+        <div class="navbar-right">
+            <button class="btn btn-login" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+
+    <section class="container">
+        <div class="section-header">
+            <h2 class="section-title">สถิติระบบ</h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="stat-grid">
+            <div class="stat-card" style="border-color: var(--primary-red);">
+                <span class="stat-val" id="stat-lost" style="color: var(--primary-red);">0</span>
+                <span class="stat-label">รายการของหาย</span>
+            </div>
+            <div class="stat-card" style="border-color: var(--primary-green);">
+                <span class="stat-val" id="stat-found" style="color: var(--primary-green);">0</span>
+                <span class="stat-label">รายการที่พบ</span>
+            </div>
+            <div class="stat-card" style="border-color: var(--primary-blue);">
+                <span class="stat-val" id="stat-returned" style="color: var(--primary-blue);">0</span>
+                <span class="stat-label">ส่งคืนสำเร็จ</span>
+            </div>
+        </div>
+
+        <div style="display:flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 16px;">
+            <h3 style="margin:0;">รายการทั้งหมด</h3>
+            <button class="btn btn-delete" onclick="deleteAllLocalReports()" style="background:#d9534f; color:#fff; border:none; padding:0.8rem 1rem; border-radius:10px; cursor:pointer;">ล้างประวัติทั้งหมด</button>
+        </div>
+        <div id="admin-all-list" class="items-grid" style="margin-top: 20px;"></div>
+    </section>
+
+    <script type="module" src="app.js"></script>
+    <script>
+        if (!currentUser || currentUser.role !== 'admin') window.location.href = 'index.html';
+    </script>
+</body>
+
+</html>

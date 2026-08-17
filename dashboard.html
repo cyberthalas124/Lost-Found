@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | SAPA Lost and Found</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    <nav class="navbar">
+        <div class="navbar-brand" onclick="window.location.href='index.html'">
+            <div class="logo-wrapper"><img src="images/sapa.png" alt="SAPA Logo" class="navbar-logo"></div>
+            <div class="navbar-text-group">
+                <span class="navbar-title">SAPA Lost & Found</span>
+                <span class="navbar-subtitle">Bangsaphanwittaya School</span>
+            </div>
+        </div>
+        <div class="navbar-right" id="nav-actions">
+            <div id="auth-actions" style="display: flex; align-items: center; gap: 15px;">
+                <div class="nav-icons">
+                    <div class="nav-icon-btn" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
+                        <i id="theme-icon-auth" class="fa-solid fa-moon"></i>
+                    </div>
+                    <div class="nav-icon-btn" onclick="toggleNotifications()">
+                        <i class="fa-solid fa-bell"></i>
+                        <div id="notif-dot" class="notification-dot hidden"></div>
+                    </div>
+                    <div class="nav-icon-btn" onclick="window.location.href='history.html'">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </div>
+                    <div class="nav-icon-btn" onclick="logout()" title="Logout">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="container">
+        <div class="section-header">
+            <h2 class="section-title">ยินดีต้อนรับ, คุณ <span id="display-student-id">Student</span></h2>
+            <div class="section-line"></div>
+        </div>
+
+        <div class="action-grid">
+            <div class="action-card" onclick="window.location.href='report-lost.html'">
+                <div class="card-icon" style="color: var(--primary-red);"><i class="fa-solid fa-box-open"></i></div>
+                <h3>แจ้งของหาย</h3>
+                <p>ทำของหายใช่ไหม? แจ้งข้อมูลเพื่อให้เพื่อนๆ ช่วยกันหา</p>
+            </div>
+            <div class="action-card" onclick="window.location.href='report-found.html'">
+                <div class="card-icon" style="color: var(--primary-green);"><i class="fa-solid fa-hand-holding-hand"></i></div>
+                <h3>แจ้งพบของ</h3>
+                <p>เก็บของได้ใช่ไหม? แจ้งข้อมูลเพื่อส่งคืนเจ้าของ</p>
+            </div>
+            <div class="action-card" onclick="window.location.href='search.html'">
+                <div class="card-icon" style="color: var(--primary-blue);"><i class="fa-solid fa-magnifying-glass"></i></div>
+                <h3>ค้นหาของ</h3>
+                <p>ตรวจสอบว่ามีคนพบของที่คุณทำหายแล้วหรือยัง</p>
+            </div>
+            <div class="action-card" onclick="window.location.href='feedback.html'">
+                <div class="card-icon" style="color: var(--primary-yellow);"><i class="fa-solid fa-comment-dots"></i></div>
+                <h3>แจ้งปัญหาเว็บไซต์</h3>
+                <p>เสนอแนะหรือแจ้งปัญหาการใช้งานระบบ</p>
+            </div>
+        </div>
+
+        <div class="emergency-info">
+            <h4><i class="fa-solid fa-triangle-exclamation"></i> กรณีฉุกเฉิน</h4>
+            <p>หากเป็นของสำคัญมาก (เช่น โทรศัพท์มือถือ, เงินจำนวนมาก) กรุณาติดต่อห้องสภานักเรียนโดยตรง </p>
+        </div>
+    </section>
+
+    <script type="module" src="app.js"></script>
+    <script>
+        if (!currentUser) window.location.href = 'index.html';
+    </script>
+</body>
+</html>

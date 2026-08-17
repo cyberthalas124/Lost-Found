@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ค้นหาของ | SAPA Lost and Found</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    <nav class="navbar">
+        <div class="navbar-brand" onclick="window.location.href='index.html'">
+            <div class="logo-wrapper"><img src="images/sapa.png" alt="SAPA Logo" class="navbar-logo"></div>
+            <div class="navbar-text-group"><span class="navbar-title">SAPA Lost & Found</span></div>
+        </div>
+        <div class="navbar-right">
+            <div class="nav-icon-btn" onclick="window.location.href='dashboard.html'"><i class="fa-solid fa-house"></i></div>
+        </div>
+    </nav>
+
+    <section class="container">
+        <div class="section-header">
+            <h2 class="section-title">ค้นหารายการทั้งหมด</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="search-wrapper" style="margin-bottom: 50px;">
+            <div class="search-icon-left"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <input type="text" id="mainSearchInput" class="search-input" placeholder="ค้นหาชื่อของ, สถานที่, หรือลักษณะเด่น..." oninput="handleSearch()">
+            <button class="btn-search">ค้นหา</button>
+        </div>
+        <div id="search-results" class="items-grid"></div>
+    </section>
+
+    <script type="module" src="app.js"></script>
+    <script>
+        function handleSearch() { renderSearch(); }
+        function renderSearch() {
+            const list = document.getElementById('search-results');
+            const term = document.getElementById('mainSearchInput').value.toLowerCase();
+            const filtered = reports.filter(r => 
+                (r.name && r.name.toLowerCase().includes(term)) || 
+                (r.location && r.location.toLowerCase().includes(term)) ||
+                (r.itemType && r.itemType.toLowerCase().includes(term))
+            );
+            list.innerHTML = '';
+            filtered.forEach(r => {
+                list.innerHTML += `
+                    <div class="item-card">
+                        <div class="item-img-placeholder">
+                            <i class="fa-solid ${r.type === 'lost' ? 'fa-magnifying-glass' : 'fa-box'}"></i>
+                            <span class="item-type-badge badge-${r.type}">${r.type}</span>
+                        </div>
+                        <div class="item-content">
+                            <div class="item-status-row">
+                                <span class="status-badge status-${r.status}">${r.status}</span>
+                            </div>
+                            <span class="item-title">${r.name}</span>
+                            <div class="item-details">
+                                <div class="item-detail-row"><i class="fa-solid fa-location-dot"></i> ${r.location}</div>
+                                <div class="item-detail-row"><i class="fa-solid fa-clock"></i> ${r.time}</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+    </script>
+</body>
+</html>

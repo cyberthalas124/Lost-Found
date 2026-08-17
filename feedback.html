@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แจ้งปัญหาว็บไซต์ | SAPA Lost and Found</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    <nav class="navbar">
+        <div class="navbar-brand" onclick="window.location.href='index.html'">
+            <div class="logo-wrapper"><img src="images/sapa.png" alt="SAPA Logo" class="navbar-logo"></div>
+            <div class="navbar-text-group"><span class="navbar-title">SAPA Lost & Found</span></div>
+        </div>
+        <div class="navbar-right">
+            <div class="nav-icon-btn" onclick="window.location.href='dashboard.html'"><i class="fa-solid fa-house"></i></div>
+        </div>
+    </nav>
+
+    <section class="container">
+        <div class="section-header">
+            <h2 class="section-title">แจ้งปัญหา/ข้อเสนอแนะ</h2>
+            <div class="section-line"></div>
+        </div>
+        <div class="form-card">
+            <div class="form-group">
+                <label class="form-label">หัวข้อปัญหา</label>
+                <input type="text" id="feedback-subject" class="form-control" placeholder="เช่น เข้าใช้งานไม่ได้, หน้าจอกระตุก">
+            </div>
+            <div class="form-group">
+                <label class="form-label">รายละเอียด</label>
+                <textarea id="feedback-details" class="form-control" rows="5"></textarea>
+            </div>
+            <button class="btn btn-register" style="width: 100%; background: var(--primary-yellow); color: var(--dark-green);" onclick="submitFeedback()">ส่งข้อมูล</button>
+        </div>
+    </div>
+    <label class="form-label">ติดต่อ admin โดยตรง</label>
+    <label class="form-label"><a href="https://www.instagram.com/winzent_nyr/" target="_blank">IG : @https://www.instagram.com/winzent_nyr/</a></label>
+
+</div>
+
+    </section>
+
+    <script type="module" src="app.js"></script>
+    <script>
+        function submitFeedback() {
+            alert('ขอบคุณสำหรับข้อเสนอแนะ!');
+            window.location.href = 'dashboard.html';
+        }
+    </script>
+</body>
+</html>
